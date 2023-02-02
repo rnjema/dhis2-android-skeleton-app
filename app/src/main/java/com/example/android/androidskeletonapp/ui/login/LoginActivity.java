@@ -141,6 +141,8 @@ public class LoginActivity extends AppCompatActivity {
     )
     private void showUserInfo(User user) {
         // TODO 2
+        Toast.makeText(getApplicationContext(), "Hello, "+ user.name(), Toast.LENGTH_SHORT)
+                .show();
     }
 
     @Override

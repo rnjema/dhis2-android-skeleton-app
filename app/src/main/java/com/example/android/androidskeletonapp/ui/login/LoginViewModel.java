@@ -1,5 +1,7 @@
 package com.example.android.androidskeletonapp.ui.login;
 
+
+
 import android.util.Patterns;
 
 import androidx.lifecycle.LiveData;
@@ -62,7 +64,9 @@ public class LoginViewModel extends ViewModel {
     )
     private Single<User> performLogin(String username, String password, String serverUrl) {
         // TODO 1
-        return Single.never();
+        Single<User> user = Sdk.d2().userModule().logIn(username, password, serverUrl);
+        return user;
+        //return Single.never();
     }
 
     void loginDataChanged(String serverUrl, String username, String password) {
