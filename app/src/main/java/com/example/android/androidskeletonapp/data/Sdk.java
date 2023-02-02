@@ -43,6 +43,15 @@ public class Sdk {
     )
     public static D2Configuration getD2Configuration(Context context) {
         // TODO
-        return null;
+        D2Configuration configuration = D2Configuration.builder()
+                .context(context)
+                .appName("HISP ASIA")
+                .appVersion("1.0.0")
+                .connectTimeoutInSeconds(120)
+                .readTimeoutInSeconds(120)
+                .writeTimeoutInSeconds(120)
+                .networkInterceptors(getNetworkInterceptors(context))
+                .build();
+        return configuration;
     }
 }
