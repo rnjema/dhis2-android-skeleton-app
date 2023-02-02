@@ -262,7 +262,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     )
     private Observable<D2Progress> downloadMetadata() {
         // TODO Download metadata
-        return Observable.empty();
+        //return Observable.empty();
+        return Sdk.d2().metadataModule().download();
     }
 
     @Exercise(
@@ -272,7 +273,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     )
     private Observable<D2Progress> downloadTrackedEntityInstances() {
         // TODO Download tracked entity instances
-        return Observable.empty();
+        return Sdk.d2().trackedEntityModule()
+                .trackedEntityInstanceDownloader()
+                .limit(10)
+                .download()
+                .cast(D2Progress.class);
     }
 
     @Exercise(
@@ -282,7 +287,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     )
     private Observable<D2Progress> downloadSingleEvents() {
         // TODO Download single events
-        return Observable.empty();
+        //return Observable.empty();
+        return Sdk.d2().eventModule()
+                .eventDownloader()
+                .limit(10)
+                .download()
+                .cast(D2Progress.class);
+
     }
 
     @Exercise(
@@ -292,7 +303,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     )
     private Observable<D2Progress> downloadAggregatedData() {
         // TODO Download aggregated data
-        return Observable.empty();
+        //return Observable.empty();
+        return Sdk.d2().aggregatedModule().data()
+                .download()
+                .cast(D2Progress.class);
     }
 
     private void uploadData() {
