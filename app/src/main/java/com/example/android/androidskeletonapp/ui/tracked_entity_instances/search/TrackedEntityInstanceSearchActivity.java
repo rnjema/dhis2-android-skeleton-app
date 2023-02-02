@@ -169,6 +169,12 @@ public class TrackedEntityInstanceSearchActivity extends ListWithoutBindingsActi
                                                                                      String attributeUid,
                                                                                      String value) {
         // TODO
-        return null;
+        return Sdk.d2().trackedEntityModule().trackedEntityInstanceQuery()
+                .byOrgUnits().in(orgUnits)
+                .byOrgUnitMode().eq(OrganisationUnitMode.DESCENDANTS)
+                .byProgram().eq(programUid)
+                .byAttribute(attributeUid).like(value)
+                .offlineFirst()
+                .getPaged(10);
     }
 }
